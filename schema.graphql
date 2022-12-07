@@ -1,0 +1,17 @@
+query GetCategories {
+  service_category {
+    id
+    name
+    icon
+  }
+}
+
+query GetShop {
+  shop {
+    id
+    name
+    address
+    location
+    logo
+  }
+}
