@@ -1,10 +1,16 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNhostClient} from '@nhost/react';
 import BottomTab from './BottomTab';
+import {createStackNavigator} from '@react-navigation/stack';
 import LoginSignupScreen from '../screens/authentication/LoginSignupScreen';
+import SignupScreen from '../screens/authentication/SignupScreen';
 
-const Stack = createNativeStackNavigator();
+export type AuthenticationStackParamList = {
+  LoginSignup: undefined;
+  Signup: undefined;
+};
+
+const Stack = createStackNavigator<AuthenticationStackParamList>();
 
 const Authentication = () => {
   const nhost = useNhostClient();
@@ -21,6 +27,13 @@ const Authentication = () => {
         }}
         name="LoginSignup"
         component={LoginSignupScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerTitle: '',
+        }}
+        name="Signup"
+        component={SignupScreen}
       />
     </Stack.Navigator>
   );

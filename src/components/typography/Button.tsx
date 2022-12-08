@@ -12,7 +12,7 @@ const Button = (props: IButtonProps) => {
 
   if (props.type === 'primary') {
     buttonStyle = {
-      ...buttonStyle,
+      ...props,
       backgroundColor: 'primary.500',
       _text: {
         color: 'white',
