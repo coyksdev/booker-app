@@ -2,7 +2,9 @@ overwrite: true
 generates:
   ./src/__generated__/resolvers-types.ts:
     schema:
-      - https://bfupsyowklrzrccolzxh.hasura.ap-southeast-1.nhost.run/v1/graphql
+      - https://bfupsyowklrzrccolzxh.hasura.ap-southeast-1.nhost.run/v1/graphql:
+          headers:
+            'x-hasura-admin-secret': ${HASURA_ADMIN_SECRET}
     documents: schema.graphql
     plugins:
       - 'typescript'

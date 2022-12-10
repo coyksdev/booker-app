@@ -8,7 +8,7 @@ import ExploreScreen from '../screens/ExploreScreen';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTab = () => {
+const Home = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -45,4 +45,4 @@ const BottomTab = () => {
   );
 };
 
-export default BottomTab;
+export default Home;

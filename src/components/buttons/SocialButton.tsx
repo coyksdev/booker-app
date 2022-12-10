@@ -22,12 +22,14 @@ type ISocialButtonProps = IButtonProps & {
 export function SocialButton(props: ISocialButtonProps) {
   let icon: JSX.Element | Array<JSX.Element>;
 
+  // assign icon
   if (props.type.icon === 'facebook') {
     icon = <FacebookIcon />;
   } else {
     icon = <GoogleIcon />;
   }
 
+  // return button based on the type
   if (props.type.type === 'icon-button') {
     return (
       <IconButton

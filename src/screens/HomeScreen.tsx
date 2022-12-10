@@ -22,56 +22,59 @@ import {Body} from '../components/typography/Body';
 import {Heading} from '../components/typography/Heading';
 import useShops from '../hooks/useShops';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
   const height = useBottomTabBarHeight();
 
   return (
-    <VStack px={5} py={3}>
-      {/* header */}
-      <Box>
-        <HStack space={3} alignItems={'center'}>
-          <HeaderLogo />
-          <Text fontSize={'2xl'} fontWeight={'bold'}>
-            Casca
-          </Text>
-          <Spacer />
-          <NotificationIcon />
-          <BookMarkIcon />
-        </HStack>
-      </Box>
-      <Text fontSize={'3xl'} fontWeight={'bold'} my={5}>
-        Morning, Gerald 👋
-      </Text>
-      {/* search bar */}
-      <Box>
-        <Input
-          placeholder="Search"
-          borderRadius={10}
-          bgColor={'gray.100'}
-          InputLeftElement={
-            <Box ml={3}>
-              <SearchIcon />
-            </Box>
-          }
-          InputRightElement={
-            <Box mr={3}>
-              <FilterIcon />
-            </Box>
-          }
-        />
-      </Box>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{
-          marginBottom: height,
-        }}>
-        {/* Service Categories */}
-        <ServiceCategoriesSection />
-        {/* Nearby Shops */}
-        <NearbyShops />
-      </ScrollView>
-    </VStack>
+    <SafeAreaView>
+      <VStack px={5} py={3} bgColor={'#F8F8F8'}>
+        {/* header */}
+        <Box>
+          <HStack space={3} alignItems={'center'}>
+            <HeaderLogo />
+            <Text fontSize={'2xl'} fontWeight={'bold'}>
+              Casca
+            </Text>
+            <Spacer />
+            <NotificationIcon />
+            <BookMarkIcon />
+          </HStack>
+        </Box>
+        <Text fontSize={'3xl'} fontWeight={'bold'} my={5}>
+          Morning, Gerald 👋
+        </Text>
+        {/* search bar */}
+        <Box>
+          <Input
+            placeholder="Search"
+            borderRadius={10}
+            bgColor={'gray.100'}
+            InputLeftElement={
+              <Box ml={3}>
+                <SearchIcon />
+              </Box>
+            }
+            InputRightElement={
+              <Box mr={3}>
+                <FilterIcon />
+              </Box>
+            }
+          />
+        </Box>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{
+            marginBottom: height,
+          }}>
+          {/* Service Categories */}
+          <ServiceCategoriesSection />
+          {/* Nearby Shops */}
+          <NearbyShops />
+        </ScrollView>
+      </VStack>
+    </SafeAreaView>
   );
 };
 

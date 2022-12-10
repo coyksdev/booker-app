@@ -8,12 +8,16 @@ import {NativeBaseProvider} from 'native-base';
 import {theme} from './theme';
 import {NavigationContainer} from '@react-navigation/native';
 import Authentication from './src/navigations/Authentication';
+import Storage from '@react-native-async-storage/async-storage';
 
 import {config} from './appConfig';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const nhost = new NhostClient({
   subdomain: config.NHOST_SUBDOMAIN,
   region: config.NHOST_REGION,
+  clientStorageType: 'react-native',
+  clientStorage: Storage,
 });
 
 function App() {
@@ -21,9 +25,11 @@ function App() {
     <NhostReactProvider nhost={nhost}>
       <NhostApolloProvider nhost={nhost}>
         <NativeBaseProvider theme={theme}>
-          <NavigationContainer>
-            <Authentication />
-          </NavigationContainer>
+          <SafeAreaProvider>
+            <NavigationContainer>
+              <Authentication />
+            </NavigationContainer>
+          </SafeAreaProvider>
         </NativeBaseProvider>
       </NhostApolloProvider>
     </NhostReactProvider>

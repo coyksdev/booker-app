@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button as NBButton, IButtonProps as NBIButtonProps} from 'native-base';
-import {Body} from './Body';
+import {Body} from '../typography/Body';
 
 interface IButtonProps extends NBIButtonProps {
   type: 'primary';

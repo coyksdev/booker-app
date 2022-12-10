@@ -1,9 +1,9 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {Divider, HStack, VStack} from 'native-base';
 
 import {Heading} from '../../components/typography/Heading';
 import {Body} from '../../components/typography/Body';
-import Button from '../../components/typography/Button';
+import Button from '../../components/buttons/Button';
 import useAuthenticationNavigation from '../../hooks/useAuthenticationNavigation';
 import {LoginSignupImageIcon} from '../../utils/svgs';
 import {SocialButton} from '../../components/buttons/SocialButton';
@@ -11,9 +11,11 @@ import {SocialButton} from '../../components/buttons/SocialButton';
 const LoginSignupScreen = () => {
   const navigation = useAuthenticationNavigation();
 
-  const goToSignupScreen = useCallback(() => {
-    navigation.push('Signup');
-  }, [navigation]);
+  const goToSignupScreen = (isLogin: boolean) => {
+    navigation.push('LoginOrSignup', {
+      isLogin,
+    });
+  };
 
   return (
     <VStack bgColor={'white'} justifyContent={'center'} flex={1} px={10}>
@@ -44,16 +46,14 @@ const LoginSignupScreen = () => {
         <Button
           type="primary"
           title="Sign in with password"
-          onPress={() => {
-            console.log('Pressed');
-          }}
+          onPress={() => goToSignupScreen(true)}
         />
         <Body type="bodyMediumRegular" color={'gray.500'}>
           Don’t have an account?{' '}
           <Body
             type="bodyMediumSemiBold"
             color={'primary.500'}
-            onPress={goToSignupScreen}>
+            onPress={() => goToSignupScreen(false)}>
             Sign up
           </Body>
         </Body>

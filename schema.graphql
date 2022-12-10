@@ -15,3 +15,9 @@ query GetShop {
     logo
   }
 }
+
+mutation UpdateUser($id: uuid!, $input: users_set_input) {
+  updateUser(pk_columns: {id: $id}, _set: $input) {
+    id
+  }
+}

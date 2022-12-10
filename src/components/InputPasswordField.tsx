@@ -2,7 +2,13 @@ import React, {useCallback, useState} from 'react';
 import {BoldHideIcon, BoldLockIcon, BoldShowIcon} from '../utils/svgs';
 import InputField from './InputField';
 
-const InputPasswordField = () => {
+interface IInputPasswordField {
+  errorText?: string;
+  ref?: React.MutableRefObject<any> | ((instance: any) => void) | undefined;
+  onChange: (...event: any[]) => void;
+}
+
+const InputPasswordField = (props: IInputPasswordField) => {
   const [isShow, setIsShow] = useState(false);
 
   const toggleShow = useCallback(() => {
@@ -11,6 +17,8 @@ const InputPasswordField = () => {
 
   return (
     <InputField
+      ref={props.ref ?? undefined}
+      onChange={props.onChange}
       type={isShow ? 'text' : 'password'}
       placeholder="Password"
       leftElement={iconColor => {
@@ -23,6 +31,7 @@ const InputPasswordField = () => {
           <BoldShowIcon color={iconColor} onPress={toggleShow} />
         );
       }}
+      errorText={props.errorText}
     />
   );
 };
