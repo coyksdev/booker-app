@@ -47,7 +47,7 @@ const Authentication = () => {
           />
           <Stack.Screen
             options={{
-              headerTitle: '',
+              headerShown: false,
             }}
             name="LoginOrSignup"
             component={LoginOrSignupScreen}

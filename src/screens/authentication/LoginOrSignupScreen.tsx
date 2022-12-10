@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
-import {Divider, HStack, VStack} from 'native-base';
+import {Divider, HStack, IconButton, VStack} from 'native-base';
 import {Heading} from '../../components/typography/Heading';
-import {BoldMessageIcon} from '../../utils/svgs';
+import {BoldMessageIcon, LightOutlineArrowLeft} from '../../utils/svgs';
 import InputField from '../../components/InputField';
 import InputPasswordField from '../../components/InputPasswordField';
 
@@ -14,6 +14,8 @@ import Button from '../../components/buttons/Button';
 import useAuthenticate from '../../hooks/useAuthenticate';
 import useAuthenticationRoute from '../../hooks/useAuthenticationRoute';
 import useAuthenticationNavigation from '../../hooks/useAuthenticationNavigation';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import Appbar from '../../components/Appbar';
 
 const schema = yup
   .object({
@@ -83,69 +85,80 @@ const LoginOrSignupScreen = () => {
     </Body>
   );
 
+  const onBackPress = useCallback(() => {
+    navigation.pop();
+  }, [navigation]);
+
   return (
-    <VStack
-      bgColor={'white'}
-      flex={1}
-      px={5}
-      space={5}
-      justifyContent={'center'}>
-      <Heading type="h1">{title}</Heading>
-      <Controller
-        control={control}
-        name="email"
-        render={({field: {onChange}}) => {
-          return (
-            <InputField
-              placeholder="Email"
-              leftElement={iconColor => <BoldMessageIcon color={iconColor} />}
-              errorText={errors.email?.message}
-              onChange={onChange}
-            />
-          );
-        }}
+    <SafeAreaView
+      // eslint-disable-next-line react-native/no-inline-styles
+      style={{
+        flex: 1,
+        backgroundColor: 'white',
+      }}>
+      <Appbar
+        leading={[
+          <IconButton icon={<LightOutlineArrowLeft />} onPress={onBackPress} />,
+        ]}
       />
-      <Controller
-        control={control}
-        name="password"
-        render={({field: {onChange}}) => {
-          return (
-            <InputPasswordField
-              onChange={onChange}
-              errorText={errors.password?.message}
-            />
-          );
-        }}
-      />
-      <Button
-        type="primary"
-        title={isLogin ? 'Sign in' : 'Sign up'}
-        isLoading={hook.isLoading}
-        onPress={handleSubmit(onSubmit)}
-      />
-      <HStack alignItems={'center'} alignSelf={'center'}>
-        <Divider w={'25%'} />
-        <Body type="bodyXLargeSemiBold" mx={5}>
-          or continue with
-        </Body>
-        <Divider w={'25%'} />
-      </HStack>
-      <HStack alignSelf={'center'} space={3}>
-        <SocialButton
-          type={{
-            type: 'icon-button',
-            icon: 'facebook',
+      <VStack flex={1} px={5} space={5} justifyContent={'center'}>
+        <Heading type="h1">{title}</Heading>
+        <Controller
+          control={control}
+          name="email"
+          render={({field: {onChange}}) => {
+            return (
+              <InputField
+                placeholder="Email"
+                leftElement={iconColor => <BoldMessageIcon color={iconColor} />}
+                errorText={errors.email?.message}
+                onChange={onChange}
+              />
+            );
           }}
         />
-        <SocialButton
-          type={{
-            type: 'icon-button',
-            icon: 'google',
+        <Controller
+          control={control}
+          name="password"
+          render={({field: {onChange}}) => {
+            return (
+              <InputPasswordField
+                onChange={onChange}
+                errorText={errors.password?.message}
+              />
+            );
           }}
         />
-      </HStack>
-      {footer}
-    </VStack>
+        <Button
+          type="primary"
+          title={isLogin ? 'Sign in' : 'Sign up'}
+          isLoading={hook.isLoading}
+          onPress={handleSubmit(onSubmit)}
+        />
+        <HStack alignItems={'center'} alignSelf={'center'}>
+          <Divider w={'25%'} />
+          <Body type="bodyXLargeSemiBold" mx={5}>
+            or continue with
+          </Body>
+          <Divider w={'25%'} />
+        </HStack>
+        <HStack alignSelf={'center'} space={3}>
+          <SocialButton
+            type={{
+              type: 'icon-button',
+              icon: 'facebook',
+            }}
+          />
+          <SocialButton
+            type={{
+              type: 'icon-button',
+              icon: 'google',
+            }}
+          />
+        </HStack>
+        {footer}
+      </VStack>
+    </SafeAreaView>
   );
 };
 

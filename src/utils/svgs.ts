@@ -6,6 +6,7 @@ import LoginSignupImageIcon from '../../assets/icons/svgs/login-signup-image-ico
 import FacebookIcon from '../../assets/icons/svgs/facebook-icon.svg';
 import GoogleIcon from '../../assets/icons/svgs/google-icon.svg';
 import BoldEditSquareIcon from '../../assets/icons/svgs/bold-edit-square-icon.svg';
+import LightOutlineArrowLeft from '../../assets/icons/svgs/light-outline-arrow-left.svg';
 
 export {
   BoldLockIcon,
@@ -16,4 +17,5 @@ export {
   FacebookIcon,
   GoogleIcon,
   BoldEditSquareIcon,
+  LightOutlineArrowLeft,
 };

@@ -28,7 +28,11 @@ const HomeScreen = () => {
   const height = useBottomTabBarHeight();
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      // eslint-disable-next-line react-native/no-inline-styles
+      style={{
+        backgroundColor: '#F8F8F8',
+      }}>
       <VStack px={5} py={3} bgColor={'#F8F8F8'}>
         {/* header */}
         <Box>
