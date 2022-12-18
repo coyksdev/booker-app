@@ -1,4 +1,7 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
-  plugins: ['@babel/plugin-transform-named-capturing-groups-regex'],
+  plugins: [
+    '@babel/plugin-transform-named-capturing-groups-regex',
+    'react-native-reanimated/plugin',
+  ],
 };

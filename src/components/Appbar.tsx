@@ -1,14 +1,30 @@
 import React from 'react';
-import {HStack} from 'native-base';
+import {HStack, IconButton} from 'native-base';
+import {LightOutlineArrowLeftIcon} from '../utils/svgs';
+import useMainNavigation from '../hooks/useMainNavigation';
+import {IHStackProps} from 'native-base/lib/typescript/components/primitives/Stack/HStack';
 
-interface IAppbarProps {
-  leading?: JSX.Element[];
+interface IAppbarProps extends IHStackProps {
+  hasBackButton: boolean;
 }
 
 const Appbar = (props: IAppbarProps) => {
+  const navigation = useMainNavigation();
+
+  const {hasBackButton, ...restOfProps} = props;
+
   return (
-    <HStack px={2}>
-      <HStack>{props.leading?.map(l => l)}</HStack>
+    <HStack {...restOfProps} px={2}>
+      <HStack>
+        {hasBackButton ? (
+          <IconButton
+            onPress={() => navigation.pop()}
+            icon={<LightOutlineArrowLeftIcon />}
+          />
+        ) : (
+          <></>
+        )}
+      </HStack>
     </HStack>
   );
 };

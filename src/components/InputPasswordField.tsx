@@ -4,7 +4,6 @@ import InputField from './InputField';
 
 interface IInputPasswordField {
   errorText?: string;
-  ref?: React.MutableRefObject<any> | ((instance: any) => void) | undefined;
   onChange: (...event: any[]) => void;
 }
 
@@ -17,7 +16,6 @@ const InputPasswordField = (props: IInputPasswordField) => {
 
   return (
     <InputField
-      ref={props.ref ?? undefined}
       onChange={props.onChange}
       type={isShow ? 'text' : 'password'}
       placeholder="Password"

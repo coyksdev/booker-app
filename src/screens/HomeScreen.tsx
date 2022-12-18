@@ -9,6 +9,7 @@ import {
   ScrollView,
   Spacer,
   Text,
+  View,
   VStack,
 } from 'native-base';
 import HeaderLogo from '../../assets/icons/svgs/header_logo.svg';
@@ -20,65 +21,49 @@ import useServiceCategories from '../hooks/useServiceCategories';
 import {SvgUri} from 'react-native-svg';
 import {Body} from '../components/typography/Body';
 import {Heading} from '../components/typography/Heading';
+import Scaffold from '../components/Scaffold';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import useMainNavigation from '../hooks/useMainNavigation';
+import Card from '../components/Card';
 import useShops from '../hooks/useShops';
-import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
-  const height = useBottomTabBarHeight();
-
   return (
-    <SafeAreaView
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        backgroundColor: '#F8F8F8',
-      }}>
-      <VStack px={5} py={3} bgColor={'#F8F8F8'}>
-        {/* header */}
-        <Box>
-          <HStack space={3} alignItems={'center'}>
-            <HeaderLogo />
-            <Text fontSize={'2xl'} fontWeight={'bold'}>
-              Casca
-            </Text>
-            <Spacer />
-            <NotificationIcon />
-            <BookMarkIcon />
-          </HStack>
-        </Box>
+    <Scaffold>
+      <View flex={1} px={5} pt={5}>
+        <HStack space={3} alignItems={'center'}>
+          <HeaderLogo />
+          <Text fontSize={'2xl'} fontWeight={'bold'}>
+            Casca
+          </Text>
+          <Spacer />
+          <NotificationIcon />
+          <BookMarkIcon />
+        </HStack>
         <Text fontSize={'3xl'} fontWeight={'bold'} my={5}>
           Morning, Gerald 👋
         </Text>
-        {/* search bar */}
-        <Box>
-          <Input
-            placeholder="Search"
-            borderRadius={10}
-            bgColor={'gray.100'}
-            InputLeftElement={
-              <Box ml={3}>
-                <SearchIcon />
-              </Box>
-            }
-            InputRightElement={
-              <Box mr={3}>
-                <FilterIcon />
-              </Box>
-            }
-          />
-        </Box>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={{
-            marginBottom: height,
-          }}>
-          {/* Service Categories */}
+        <Input
+          placeholder="Search"
+          borderRadius={10}
+          bgColor={'gray.100'}
+          InputLeftElement={
+            <Box ml={3}>
+              <SearchIcon />
+            </Box>
+          }
+          InputRightElement={
+            <Box mr={3}>
+              <FilterIcon />
+            </Box>
+          }
+        />
+        <ScrollView showsVerticalScrollIndicator={false} h={'100%'}>
           <ServiceCategoriesSection />
-          {/* Nearby Shops */}
           <NearbyShops />
         </ScrollView>
-      </VStack>
-    </SafeAreaView>
+      </View>
+    </Scaffold>
   );
 };
 
@@ -120,6 +105,7 @@ function ServiceCategoriesSection() {
 
 function NearbyShops() {
   const {data} = useShops();
+  const navigation = useMainNavigation();
 
   return (
     <VStack space={5}>
@@ -129,26 +115,30 @@ function NearbyShops() {
           See all
         </Body>
       </HStack>
-      {data.map(item => {
+      {data?.map(item => {
         return (
-          <VStack key={item.id} bgColor={'white'} rounded={'lg'}>
-            <HStack space={3} p={3}>
-              <Image
-                rounded={'lg'}
-                h={70}
-                w={70}
-                alt={item.name}
-                src={item.logo}
-              />
-              <VStack flex={1}>
-                <Heading type="h6">{item.name}</Heading>
-                <Body type="bodyMediumMedium" numberOfLines={2}>
-                  {item.address}
-                </Body>
-              </VStack>
-              <BookMarkIcon />
-            </HStack>
-          </VStack>
+          <TouchableOpacity
+            key={item.id}
+            onPress={() => navigation.push('Shop', {shopId: item.id})}>
+            <Card>
+              <HStack space={3} p={3}>
+                <Image
+                  rounded={'lg'}
+                  h={70}
+                  w={70}
+                  alt={item.name}
+                  src={item.logo}
+                />
+                <VStack flex={1}>
+                  <Heading type="h6">{item.name}</Heading>
+                  <Body type="bodyMediumMedium" numberOfLines={1}>
+                    {item.address}
+                  </Body>
+                </VStack>
+                <BookMarkIcon />
+              </HStack>
+            </Card>
+          </TouchableOpacity>
         );
       })}
     </VStack>

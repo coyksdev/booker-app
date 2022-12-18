@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
-import {Divider, HStack, IconButton, VStack} from 'native-base';
+import {Divider, HStack, VStack} from 'native-base';
 import {Heading} from '../../components/typography/Heading';
-import {BoldMessageIcon, LightOutlineArrowLeft} from '../../utils/svgs';
+import {BoldMessageIcon} from '../../utils/svgs';
 import InputField from '../../components/InputField';
 import InputPasswordField from '../../components/InputPasswordField';
 
@@ -85,10 +85,6 @@ const LoginOrSignupScreen = () => {
     </Body>
   );
 
-  const onBackPress = useCallback(() => {
-    navigation.pop();
-  }, [navigation]);
-
   return (
     <SafeAreaView
       // eslint-disable-next-line react-native/no-inline-styles
@@ -96,11 +92,7 @@ const LoginOrSignupScreen = () => {
         flex: 1,
         backgroundColor: 'white',
       }}>
-      <Appbar
-        leading={[
-          <IconButton icon={<LightOutlineArrowLeft />} onPress={onBackPress} />,
-        ]}
-      />
+      <Appbar hasBackButton />
       <VStack flex={1} px={5} space={5} justifyContent={'center'}>
         <Heading type="h1">{title}</Heading>
         <Controller

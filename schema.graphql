@@ -6,13 +6,32 @@ query GetCategories {
   }
 }
 
-query GetShop {
-  shop {
+query GetShops($where: shop_bool_exp) {
+  shop(where: $where) {
     id
     name
     address
     location
     logo
+    description
+    featured_images {
+      fileId
+    }
+    specialists {
+      id
+      firstName
+      profileImageId
+      position
+    }
+  }
+}
+
+query GetSpecialistsByShopId($shopId: uuid!) {
+  specialists(where: {shopId: {_eq: $shopId}}) {
+    id
+    firstName
+    profileImageId
+    position
   }
 }
 

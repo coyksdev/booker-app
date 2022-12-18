@@ -4,8 +4,17 @@ import FillInfoScreen from '../screens/FillInfoScreen';
 import Home from './Home';
 import {useUserData} from '@nhost/react';
 import * as _ from 'lodash';
+import ShopScreen from '../screens/ShopScreen';
 
-const Stack = createStackNavigator();
+export type MainStackParamList = {
+  FillInfo: undefined;
+  HomeTab: undefined;
+  Shop: {
+    shopId: string;
+  };
+};
+
+const Stack = createStackNavigator<MainStackParamList>();
 
 const Main = () => {
   const userData = useUserData();
@@ -26,6 +35,13 @@ const Main = () => {
       <Stack.Screen
         name="HomeTab"
         component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Shop"
+        component={ShopScreen}
         options={{
           headerShown: false,
         }}

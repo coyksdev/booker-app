@@ -11,7 +11,6 @@ import Authentication from './src/navigations/Authentication';
 import Storage from '@react-native-async-storage/async-storage';
 
 import {config} from './appConfig';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const nhost = new NhostClient({
   subdomain: config.NHOST_SUBDOMAIN,
@@ -25,11 +24,9 @@ function App() {
     <NhostReactProvider nhost={nhost}>
       <NhostApolloProvider nhost={nhost}>
         <NativeBaseProvider theme={theme}>
-          <SafeAreaProvider>
-            <NavigationContainer>
-              <Authentication />
-            </NavigationContainer>
-          </SafeAreaProvider>
+          <NavigationContainer>
+            <Authentication />
+          </NavigationContainer>
         </NativeBaseProvider>
       </NhostApolloProvider>
     </NhostReactProvider>

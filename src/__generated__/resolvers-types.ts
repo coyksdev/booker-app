@@ -2013,6 +2013,195 @@ export enum Cursor_Ordering {
   Desc = 'DESC'
 }
 
+/** columns and relationships of "featured_images" */
+export type Featured_Images = {
+  __typename?: 'featured_images';
+  fileId: Scalars['String'];
+  id: Scalars['uuid'];
+  /** An object relationship */
+  shop: Shop;
+  shopId: Scalars['uuid'];
+};
+
+/** aggregated selection of "featured_images" */
+export type Featured_Images_Aggregate = {
+  __typename?: 'featured_images_aggregate';
+  aggregate?: Maybe<Featured_Images_Aggregate_Fields>;
+  nodes: Array<Featured_Images>;
+};
+
+export type Featured_Images_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Featured_Images_Aggregate_Bool_Exp_Count>;
+};
+
+export type Featured_Images_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Featured_Images_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "featured_images" */
+export type Featured_Images_Aggregate_Fields = {
+  __typename?: 'featured_images_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Featured_Images_Max_Fields>;
+  min?: Maybe<Featured_Images_Min_Fields>;
+};
+
+
+/** aggregate fields of "featured_images" */
+export type Featured_Images_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "featured_images" */
+export type Featured_Images_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Featured_Images_Max_Order_By>;
+  min?: InputMaybe<Featured_Images_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "featured_images" */
+export type Featured_Images_Arr_Rel_Insert_Input = {
+  data: Array<Featured_Images_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Featured_Images_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "featured_images". All fields are combined with a logical 'AND'. */
+export type Featured_Images_Bool_Exp = {
+  _and?: InputMaybe<Array<Featured_Images_Bool_Exp>>;
+  _not?: InputMaybe<Featured_Images_Bool_Exp>;
+  _or?: InputMaybe<Array<Featured_Images_Bool_Exp>>;
+  fileId?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  shop?: InputMaybe<Shop_Bool_Exp>;
+  shopId?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "featured_images" */
+export enum Featured_Images_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  FeaturedImagesPkey = 'featured_images_pkey'
+}
+
+/** input type for inserting data into table "featured_images" */
+export type Featured_Images_Insert_Input = {
+  fileId?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  shop?: InputMaybe<Shop_Obj_Rel_Insert_Input>;
+  shopId?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Featured_Images_Max_Fields = {
+  __typename?: 'featured_images_max_fields';
+  fileId?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  shopId?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "featured_images" */
+export type Featured_Images_Max_Order_By = {
+  fileId?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  shopId?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Featured_Images_Min_Fields = {
+  __typename?: 'featured_images_min_fields';
+  fileId?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  shopId?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "featured_images" */
+export type Featured_Images_Min_Order_By = {
+  fileId?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  shopId?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "featured_images" */
+export type Featured_Images_Mutation_Response = {
+  __typename?: 'featured_images_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Featured_Images>;
+};
+
+/** on_conflict condition type for table "featured_images" */
+export type Featured_Images_On_Conflict = {
+  constraint: Featured_Images_Constraint;
+  update_columns?: Array<Featured_Images_Update_Column>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "featured_images". */
+export type Featured_Images_Order_By = {
+  fileId?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  shop?: InputMaybe<Shop_Order_By>;
+  shopId?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: featured_images */
+export type Featured_Images_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "featured_images" */
+export enum Featured_Images_Select_Column {
+  /** column name */
+  FileId = 'fileId',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  ShopId = 'shopId'
+}
+
+/** input type for updating data in table "featured_images" */
+export type Featured_Images_Set_Input = {
+  fileId?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  shopId?: InputMaybe<Scalars['uuid']>;
+};
+
+/** Streaming cursor of the table "featured_images" */
+export type Featured_Images_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Featured_Images_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Featured_Images_Stream_Cursor_Value_Input = {
+  fileId?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  shopId?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "featured_images" */
+export enum Featured_Images_Update_Column {
+  /** column name */
+  FileId = 'fileId',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  ShopId = 'shopId'
+}
+
+export type Featured_Images_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Featured_Images_Set_Input>;
+  where: Featured_Images_Bool_Exp;
+};
+
 /** columns and relationships of "storage.files" */
 export type Files = {
   __typename?: 'files';
@@ -2566,6 +2755,10 @@ export type Mutation_Root = {
   deleteUser?: Maybe<Users>;
   /** delete data from the table: "auth.users" */
   deleteUsers?: Maybe<Users_Mutation_Response>;
+  /** delete data from the table: "featured_images" */
+  delete_featured_images?: Maybe<Featured_Images_Mutation_Response>;
+  /** delete single row from the table: "featured_images" */
+  delete_featured_images_by_pk?: Maybe<Featured_Images>;
   /** delete data from the table: "service_category" */
   delete_service_category?: Maybe<Service_Category_Mutation_Response>;
   /** delete single row from the table: "service_category" */
@@ -2574,6 +2767,10 @@ export type Mutation_Root = {
   delete_shop?: Maybe<Shop_Mutation_Response>;
   /** delete single row from the table: "shop" */
   delete_shop_by_pk?: Maybe<Shop>;
+  /** delete data from the table: "specialists" */
+  delete_specialists?: Maybe<Specialists_Mutation_Response>;
+  /** delete single row from the table: "specialists" */
+  delete_specialists_by_pk?: Maybe<Specialists>;
   /** insert a single row into the table: "auth.providers" */
   insertAuthProvider?: Maybe<AuthProviders>;
   /** insert a single row into the table: "auth.provider_requests" */
@@ -2614,6 +2811,10 @@ export type Mutation_Root = {
   insertUser?: Maybe<Users>;
   /** insert data into the table: "auth.users" */
   insertUsers?: Maybe<Users_Mutation_Response>;
+  /** insert data into the table: "featured_images" */
+  insert_featured_images?: Maybe<Featured_Images_Mutation_Response>;
+  /** insert a single row into the table: "featured_images" */
+  insert_featured_images_one?: Maybe<Featured_Images>;
   /** insert data into the table: "service_category" */
   insert_service_category?: Maybe<Service_Category_Mutation_Response>;
   /** insert a single row into the table: "service_category" */
@@ -2622,6 +2823,10 @@ export type Mutation_Root = {
   insert_shop?: Maybe<Shop_Mutation_Response>;
   /** insert a single row into the table: "shop" */
   insert_shop_one?: Maybe<Shop>;
+  /** insert data into the table: "specialists" */
+  insert_specialists?: Maybe<Specialists_Mutation_Response>;
+  /** insert a single row into the table: "specialists" */
+  insert_specialists_one?: Maybe<Specialists>;
   /** update single row of the table: "auth.providers" */
   updateAuthProvider?: Maybe<AuthProviders>;
   /** update single row of the table: "auth.provider_requests" */
@@ -2678,6 +2883,12 @@ export type Mutation_Root = {
   update_authUserSecurityKeys_many?: Maybe<Array<Maybe<AuthUserSecurityKeys_Mutation_Response>>>;
   /** update multiples rows of table: "storage.buckets" */
   update_buckets_many?: Maybe<Array<Maybe<Buckets_Mutation_Response>>>;
+  /** update data of the table: "featured_images" */
+  update_featured_images?: Maybe<Featured_Images_Mutation_Response>;
+  /** update single row of the table: "featured_images" */
+  update_featured_images_by_pk?: Maybe<Featured_Images>;
+  /** update multiples rows of table: "featured_images" */
+  update_featured_images_many?: Maybe<Array<Maybe<Featured_Images_Mutation_Response>>>;
   /** update multiples rows of table: "storage.files" */
   update_files_many?: Maybe<Array<Maybe<Files_Mutation_Response>>>;
   /** update data of the table: "service_category" */
@@ -2692,6 +2903,12 @@ export type Mutation_Root = {
   update_shop_by_pk?: Maybe<Shop>;
   /** update multiples rows of table: "shop" */
   update_shop_many?: Maybe<Array<Maybe<Shop_Mutation_Response>>>;
+  /** update data of the table: "specialists" */
+  update_specialists?: Maybe<Specialists_Mutation_Response>;
+  /** update single row of the table: "specialists" */
+  update_specialists_by_pk?: Maybe<Specialists>;
+  /** update multiples rows of table: "specialists" */
+  update_specialists_many?: Maybe<Array<Maybe<Specialists_Mutation_Response>>>;
   /** update multiples rows of table: "auth.users" */
   update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
 };
@@ -2818,6 +3035,18 @@ export type Mutation_RootDeleteUsersArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Featured_ImagesArgs = {
+  where: Featured_Images_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Featured_Images_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Service_CategoryArgs = {
   where: Service_Category_Bool_Exp;
 };
@@ -2837,6 +3066,18 @@ export type Mutation_RootDelete_ShopArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Shop_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_SpecialistsArgs = {
+  where: Specialists_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Specialists_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -2982,6 +3223,20 @@ export type Mutation_RootInsertUsersArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Featured_ImagesArgs = {
+  objects: Array<Featured_Images_Insert_Input>;
+  on_conflict?: InputMaybe<Featured_Images_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Featured_Images_OneArgs = {
+  object: Featured_Images_Insert_Input;
+  on_conflict?: InputMaybe<Featured_Images_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Service_CategoryArgs = {
   objects: Array<Service_Category_Insert_Input>;
   on_conflict?: InputMaybe<Service_Category_On_Conflict>;
@@ -3006,6 +3261,20 @@ export type Mutation_RootInsert_ShopArgs = {
 export type Mutation_RootInsert_Shop_OneArgs = {
   object: Shop_Insert_Input;
   on_conflict?: InputMaybe<Shop_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_SpecialistsArgs = {
+  objects: Array<Specialists_Insert_Input>;
+  on_conflict?: InputMaybe<Specialists_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Specialists_OneArgs = {
+  object: Specialists_Insert_Input;
+  on_conflict?: InputMaybe<Specialists_On_Conflict>;
 };
 
 
@@ -3224,6 +3493,26 @@ export type Mutation_RootUpdate_Buckets_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Featured_ImagesArgs = {
+  _set?: InputMaybe<Featured_Images_Set_Input>;
+  where: Featured_Images_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Featured_Images_By_PkArgs = {
+  _set?: InputMaybe<Featured_Images_Set_Input>;
+  pk_columns: Featured_Images_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Featured_Images_ManyArgs = {
+  updates: Array<Featured_Images_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Files_ManyArgs = {
   updates: Array<Files_Updates>;
 };
@@ -3266,6 +3555,26 @@ export type Mutation_RootUpdate_Shop_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Shop_ManyArgs = {
   updates: Array<Shop_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_SpecialistsArgs = {
+  _set?: InputMaybe<Specialists_Set_Input>;
+  where: Specialists_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Specialists_By_PkArgs = {
+  _set?: InputMaybe<Specialists_Set_Input>;
+  pk_columns: Specialists_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Specialists_ManyArgs = {
+  updates: Array<Specialists_Updates>;
 };
 
 
@@ -3340,6 +3649,12 @@ export type Query_Root = {
   buckets: Array<Buckets>;
   /** fetch aggregated fields from the table: "storage.buckets" */
   bucketsAggregate: Buckets_Aggregate;
+  /** An array relationship */
+  featured_images: Array<Featured_Images>;
+  /** An aggregate relationship */
+  featured_images_aggregate: Featured_Images_Aggregate;
+  /** fetch data from the table: "featured_images" using primary key columns */
+  featured_images_by_pk?: Maybe<Featured_Images>;
   /** fetch data from the table: "storage.files" using primary key columns */
   file?: Maybe<Files>;
   /** An array relationship */
@@ -3358,6 +3673,12 @@ export type Query_Root = {
   shop_aggregate: Shop_Aggregate;
   /** fetch data from the table: "shop" using primary key columns */
   shop_by_pk?: Maybe<Shop>;
+  /** An array relationship */
+  specialists: Array<Specialists>;
+  /** An aggregate relationship */
+  specialists_aggregate: Specialists_Aggregate;
+  /** fetch data from the table: "specialists" using primary key columns */
+  specialists_by_pk?: Maybe<Specialists>;
   /** fetch data from the table: "auth.users" using primary key columns */
   user?: Maybe<Users>;
   /** fetch data from the table: "auth.users" */
@@ -3551,6 +3872,29 @@ export type Query_RootBucketsAggregateArgs = {
 };
 
 
+export type Query_RootFeatured_ImagesArgs = {
+  distinct_on?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Featured_Images_Order_By>>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+
+export type Query_RootFeatured_Images_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Featured_Images_Order_By>>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+
+export type Query_RootFeatured_Images_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
 export type Query_RootFileArgs = {
   id: Scalars['uuid'];
 };
@@ -3616,6 +3960,29 @@ export type Query_RootShop_AggregateArgs = {
 
 
 export type Query_RootShop_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootSpecialistsArgs = {
+  distinct_on?: InputMaybe<Array<Specialists_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Specialists_Order_By>>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
+};
+
+
+export type Query_RootSpecialists_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Specialists_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Specialists_Order_By>>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
+};
+
+
+export type Query_RootSpecialists_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -3792,10 +4159,60 @@ export type Shop = {
   __typename?: 'shop';
   address: Scalars['String'];
   contact?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  featured_images: Array<Featured_Images>;
+  /** An aggregate relationship */
+  featured_images_aggregate: Featured_Images_Aggregate;
   id: Scalars['uuid'];
   location: Scalars['geometry'];
   logo?: Maybe<Scalars['String']>;
   name: Scalars['String'];
+  /** An array relationship */
+  specialists: Array<Specialists>;
+  /** An aggregate relationship */
+  specialists_aggregate: Specialists_Aggregate;
+  website?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "shop" */
+export type ShopFeatured_ImagesArgs = {
+  distinct_on?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Featured_Images_Order_By>>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+
+/** columns and relationships of "shop" */
+export type ShopFeatured_Images_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Featured_Images_Order_By>>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+
+/** columns and relationships of "shop" */
+export type ShopSpecialistsArgs = {
+  distinct_on?: InputMaybe<Array<Specialists_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Specialists_Order_By>>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
+};
+
+
+/** columns and relationships of "shop" */
+export type ShopSpecialists_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Specialists_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Specialists_Order_By>>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
 };
 
 /** aggregated selection of "shop" */
@@ -3827,10 +4244,16 @@ export type Shop_Bool_Exp = {
   _or?: InputMaybe<Array<Shop_Bool_Exp>>;
   address?: InputMaybe<String_Comparison_Exp>;
   contact?: InputMaybe<String_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  featured_images?: InputMaybe<Featured_Images_Bool_Exp>;
+  featured_images_aggregate?: InputMaybe<Featured_Images_Aggregate_Bool_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   location?: InputMaybe<Geometry_Comparison_Exp>;
   logo?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  specialists?: InputMaybe<Specialists_Bool_Exp>;
+  specialists_aggregate?: InputMaybe<Specialists_Aggregate_Bool_Exp>;
+  website?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "shop" */
@@ -3843,10 +4266,14 @@ export enum Shop_Constraint {
 export type Shop_Insert_Input = {
   address?: InputMaybe<Scalars['String']>;
   contact?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  featured_images?: InputMaybe<Featured_Images_Arr_Rel_Insert_Input>;
   id?: InputMaybe<Scalars['uuid']>;
   location?: InputMaybe<Scalars['geometry']>;
   logo?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  specialists?: InputMaybe<Specialists_Arr_Rel_Insert_Input>;
+  website?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -3854,9 +4281,11 @@ export type Shop_Max_Fields = {
   __typename?: 'shop_max_fields';
   address?: Maybe<Scalars['String']>;
   contact?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
   logo?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
 };
 
 /** aggregate min on columns */
@@ -3864,9 +4293,11 @@ export type Shop_Min_Fields = {
   __typename?: 'shop_min_fields';
   address?: Maybe<Scalars['String']>;
   contact?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
   logo?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
 };
 
 /** response of any mutation on the table "shop" */
@@ -3876,6 +4307,13 @@ export type Shop_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Shop>;
+};
+
+/** input type for inserting object relation for remote table "shop" */
+export type Shop_Obj_Rel_Insert_Input = {
+  data: Shop_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Shop_On_Conflict>;
 };
 
 /** on_conflict condition type for table "shop" */
@@ -3889,10 +4327,14 @@ export type Shop_On_Conflict = {
 export type Shop_Order_By = {
   address?: InputMaybe<Order_By>;
   contact?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  featured_images_aggregate?: InputMaybe<Featured_Images_Aggregate_Order_By>;
   id?: InputMaybe<Order_By>;
   location?: InputMaybe<Order_By>;
   logo?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  specialists_aggregate?: InputMaybe<Specialists_Aggregate_Order_By>;
+  website?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: shop */
@@ -3907,23 +4349,29 @@ export enum Shop_Select_Column {
   /** column name */
   Contact = 'contact',
   /** column name */
+  Description = 'description',
+  /** column name */
   Id = 'id',
   /** column name */
   Location = 'location',
   /** column name */
   Logo = 'logo',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Website = 'website'
 }
 
 /** input type for updating data in table "shop" */
 export type Shop_Set_Input = {
   address?: InputMaybe<Scalars['String']>;
   contact?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   location?: InputMaybe<Scalars['geometry']>;
   logo?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  website?: InputMaybe<Scalars['String']>;
 };
 
 /** Streaming cursor of the table "shop" */
@@ -3938,10 +4386,12 @@ export type Shop_Stream_Cursor_Input = {
 export type Shop_Stream_Cursor_Value_Input = {
   address?: InputMaybe<Scalars['String']>;
   contact?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   location?: InputMaybe<Scalars['geometry']>;
   logo?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  website?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "shop" */
@@ -3951,19 +4401,240 @@ export enum Shop_Update_Column {
   /** column name */
   Contact = 'contact',
   /** column name */
+  Description = 'description',
+  /** column name */
   Id = 'id',
   /** column name */
   Location = 'location',
   /** column name */
   Logo = 'logo',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Website = 'website'
 }
 
 export type Shop_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Shop_Set_Input>;
   where: Shop_Bool_Exp;
+};
+
+/** columns and relationships of "specialists" */
+export type Specialists = {
+  __typename?: 'specialists';
+  firstName: Scalars['String'];
+  id: Scalars['uuid'];
+  position: Scalars['String'];
+  profileImageId: Scalars['uuid'];
+  /** An object relationship */
+  shop: Shop;
+  shopId: Scalars['uuid'];
+};
+
+/** aggregated selection of "specialists" */
+export type Specialists_Aggregate = {
+  __typename?: 'specialists_aggregate';
+  aggregate?: Maybe<Specialists_Aggregate_Fields>;
+  nodes: Array<Specialists>;
+};
+
+export type Specialists_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Specialists_Aggregate_Bool_Exp_Count>;
+};
+
+export type Specialists_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Specialists_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Specialists_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "specialists" */
+export type Specialists_Aggregate_Fields = {
+  __typename?: 'specialists_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Specialists_Max_Fields>;
+  min?: Maybe<Specialists_Min_Fields>;
+};
+
+
+/** aggregate fields of "specialists" */
+export type Specialists_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Specialists_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "specialists" */
+export type Specialists_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Specialists_Max_Order_By>;
+  min?: InputMaybe<Specialists_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "specialists" */
+export type Specialists_Arr_Rel_Insert_Input = {
+  data: Array<Specialists_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Specialists_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "specialists". All fields are combined with a logical 'AND'. */
+export type Specialists_Bool_Exp = {
+  _and?: InputMaybe<Array<Specialists_Bool_Exp>>;
+  _not?: InputMaybe<Specialists_Bool_Exp>;
+  _or?: InputMaybe<Array<Specialists_Bool_Exp>>;
+  firstName?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  position?: InputMaybe<String_Comparison_Exp>;
+  profileImageId?: InputMaybe<Uuid_Comparison_Exp>;
+  shop?: InputMaybe<Shop_Bool_Exp>;
+  shopId?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "specialists" */
+export enum Specialists_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  SpecialistsPkey = 'specialists_pkey'
+}
+
+/** input type for inserting data into table "specialists" */
+export type Specialists_Insert_Input = {
+  firstName?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  position?: InputMaybe<Scalars['String']>;
+  profileImageId?: InputMaybe<Scalars['uuid']>;
+  shop?: InputMaybe<Shop_Obj_Rel_Insert_Input>;
+  shopId?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Specialists_Max_Fields = {
+  __typename?: 'specialists_max_fields';
+  firstName?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  position?: Maybe<Scalars['String']>;
+  profileImageId?: Maybe<Scalars['uuid']>;
+  shopId?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "specialists" */
+export type Specialists_Max_Order_By = {
+  firstName?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  profileImageId?: InputMaybe<Order_By>;
+  shopId?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Specialists_Min_Fields = {
+  __typename?: 'specialists_min_fields';
+  firstName?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  position?: Maybe<Scalars['String']>;
+  profileImageId?: Maybe<Scalars['uuid']>;
+  shopId?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "specialists" */
+export type Specialists_Min_Order_By = {
+  firstName?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  profileImageId?: InputMaybe<Order_By>;
+  shopId?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "specialists" */
+export type Specialists_Mutation_Response = {
+  __typename?: 'specialists_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Specialists>;
+};
+
+/** on_conflict condition type for table "specialists" */
+export type Specialists_On_Conflict = {
+  constraint: Specialists_Constraint;
+  update_columns?: Array<Specialists_Update_Column>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "specialists". */
+export type Specialists_Order_By = {
+  firstName?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  profileImageId?: InputMaybe<Order_By>;
+  shop?: InputMaybe<Shop_Order_By>;
+  shopId?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: specialists */
+export type Specialists_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "specialists" */
+export enum Specialists_Select_Column {
+  /** column name */
+  FirstName = 'firstName',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  ProfileImageId = 'profileImageId',
+  /** column name */
+  ShopId = 'shopId'
+}
+
+/** input type for updating data in table "specialists" */
+export type Specialists_Set_Input = {
+  firstName?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  position?: InputMaybe<Scalars['String']>;
+  profileImageId?: InputMaybe<Scalars['uuid']>;
+  shopId?: InputMaybe<Scalars['uuid']>;
+};
+
+/** Streaming cursor of the table "specialists" */
+export type Specialists_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Specialists_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Specialists_Stream_Cursor_Value_Input = {
+  firstName?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  position?: InputMaybe<Scalars['String']>;
+  profileImageId?: InputMaybe<Scalars['uuid']>;
+  shopId?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "specialists" */
+export enum Specialists_Update_Column {
+  /** column name */
+  FirstName = 'firstName',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  ProfileImageId = 'profileImageId',
+  /** column name */
+  ShopId = 'shopId'
+}
+
+export type Specialists_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Specialists_Set_Input>;
+  where: Specialists_Bool_Exp;
 };
 
 export type St_D_Within_Geography_Input = {
@@ -4043,6 +4714,14 @@ export type Subscription_Root = {
   bucketsAggregate: Buckets_Aggregate;
   /** fetch data from the table in a streaming manner: "storage.buckets" */
   buckets_stream: Array<Buckets>;
+  /** An array relationship */
+  featured_images: Array<Featured_Images>;
+  /** An aggregate relationship */
+  featured_images_aggregate: Featured_Images_Aggregate;
+  /** fetch data from the table: "featured_images" using primary key columns */
+  featured_images_by_pk?: Maybe<Featured_Images>;
+  /** fetch data from the table in a streaming manner: "featured_images" */
+  featured_images_stream: Array<Featured_Images>;
   /** fetch data from the table: "storage.files" using primary key columns */
   file?: Maybe<Files>;
   /** An array relationship */
@@ -4067,6 +4746,14 @@ export type Subscription_Root = {
   shop_by_pk?: Maybe<Shop>;
   /** fetch data from the table in a streaming manner: "shop" */
   shop_stream: Array<Shop>;
+  /** An array relationship */
+  specialists: Array<Specialists>;
+  /** An aggregate relationship */
+  specialists_aggregate: Specialists_Aggregate;
+  /** fetch data from the table: "specialists" using primary key columns */
+  specialists_by_pk?: Maybe<Specialists>;
+  /** fetch data from the table in a streaming manner: "specialists" */
+  specialists_stream: Array<Specialists>;
   /** fetch data from the table: "auth.users" using primary key columns */
   user?: Maybe<Users>;
   /** fetch data from the table: "auth.users" */
@@ -4318,6 +5005,36 @@ export type Subscription_RootBuckets_StreamArgs = {
 };
 
 
+export type Subscription_RootFeatured_ImagesArgs = {
+  distinct_on?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Featured_Images_Order_By>>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+
+export type Subscription_RootFeatured_Images_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Featured_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Featured_Images_Order_By>>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+
+export type Subscription_RootFeatured_Images_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootFeatured_Images_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Featured_Images_Stream_Cursor_Input>>;
+  where?: InputMaybe<Featured_Images_Bool_Exp>;
+};
+
+
 export type Subscription_RootFileArgs = {
   id: Scalars['uuid'];
 };
@@ -4405,6 +5122,36 @@ export type Subscription_RootShop_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Shop_Stream_Cursor_Input>>;
   where?: InputMaybe<Shop_Bool_Exp>;
+};
+
+
+export type Subscription_RootSpecialistsArgs = {
+  distinct_on?: InputMaybe<Array<Specialists_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Specialists_Order_By>>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
+};
+
+
+export type Subscription_RootSpecialists_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Specialists_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Specialists_Order_By>>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
+};
+
+
+export type Subscription_RootSpecialists_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootSpecialists_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Specialists_Stream_Cursor_Input>>;
+  where?: InputMaybe<Specialists_Bool_Exp>;
 };
 
 
@@ -5149,10 +5896,19 @@ export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetCategoriesQuery = { __typename?: 'query_root', service_category: Array<{ __typename?: 'service_category', id: any, name: string, icon: string }> };
 
-export type GetShopQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetShopsQueryVariables = Exact<{
+  where?: InputMaybe<Shop_Bool_Exp>;
+}>;
 
 
-export type GetShopQuery = { __typename?: 'query_root', shop: Array<{ __typename?: 'shop', id: any, name: string, address: string, location: any, logo?: string | null }> };
+export type GetShopsQuery = { __typename?: 'query_root', shop: Array<{ __typename?: 'shop', id: any, name: string, address: string, location: any, logo?: string | null, description?: string | null, featured_images: Array<{ __typename?: 'featured_images', fileId: string }>, specialists: Array<{ __typename?: 'specialists', id: any, firstName: string, profileImageId: any, position: string }> }> };
+
+export type GetSpecialistsByShopIdQueryVariables = Exact<{
+  shopId: Scalars['uuid'];
+}>;
+
+
+export type GetSpecialistsByShopIdQuery = { __typename?: 'query_root', specialists: Array<{ __typename?: 'specialists', id: any, firstName: string, profileImageId: any, position: string }> };
 
 export type UpdateUserMutationVariables = Exact<{
   id: Scalars['uuid'];
@@ -5164,5 +5920,6 @@ export type UpdateUserMutation = { __typename?: 'mutation_root', updateUser?: { 
 
 
 export const GetCategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"service_category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}}]}}]}}]} as unknown as DocumentNode<GetCategoriesQuery, GetCategoriesQueryVariables>;
-export const GetShopDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetShop"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shop"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"location"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}}]}}]}}]} as unknown as DocumentNode<GetShopQuery, GetShopQueryVariables>;
+export const GetShopsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetShops"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"shop_bool_exp"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shop"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"location"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"featured_images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fileId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"specialists"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"profileImageId"}},{"kind":"Field","name":{"kind":"Name","value":"position"}}]}}]}}]}}]} as unknown as DocumentNode<GetShopsQuery, GetShopsQueryVariables>;
+export const GetSpecialistsByShopIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetSpecialistsByShopId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"shopId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"uuid"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"specialists"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"shopId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"shopId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"profileImageId"}},{"kind":"Field","name":{"kind":"Name","value":"position"}}]}}]}}]} as unknown as DocumentNode<GetSpecialistsByShopIdQuery, GetSpecialistsByShopIdQueryVariables>;
 export const UpdateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"uuid"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"users_set_input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"pk_columns"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}},{"kind":"Argument","name":{"kind":"Name","value":"_set"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateUserMutation, UpdateUserMutationVariables>;
